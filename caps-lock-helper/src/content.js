@@ -31,9 +31,11 @@ function setCommonStyles(element) {
   element.style.zIndex = '2147483647';
   element.style.display = 'none';
   element.style.pointerEvents = 'none';
+  element.style.width = 'max-content';
 }
 
 function updateIndicatorPosition() {
+
   switch(settings.position) {
     case 'top-left':
       indicator.style.top = '10px';

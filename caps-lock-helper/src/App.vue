@@ -24,7 +24,11 @@
       <input v-model="capsOffText">
     </div>
     <button @click="saveSettings">保存</button>
-    <div v-if="saveStatus" class="save-status">{{ saveStatus }}</div>
+    <div v-if="saveStatus" class="save-status">
+      設置已保存，請
+      <a href="#" @click.prevent="reloadExtension" class="reload-link">重新整理頁面</a>
+      生效
+    </div>
   </div>
 </template>
 
@@ -35,7 +39,7 @@ const position = ref('top-right');
 const capsOnText = ref('大寫模式：開啟');
 const capsOffText = ref('大寫模式：關閉');
 const showAtTarget = ref(false);
-const saveStatus = ref('');
+const saveStatus = ref(false);
 
 onMounted(() => {
   chrome.storage.sync.get(['position', 'capsOnText', 'capsOffText', 'showAtTarget'], (items) => {
@@ -53,11 +57,13 @@ const saveSettings = () => {
     capsOffText: capsOffText.value,
     showAtTarget: showAtTarget.value
   }, () => {
-    saveStatus.value = '設置已保存';
-    setTimeout(() => {
-      saveStatus.value = '';
-    }, 1500);
+    saveStatus.value = true;
   });
+};
+
+const reloadExtension = () => {
+  chrome.tabs.reload();
+  chrome.runtime.reload();
 };
 </script>
 
@@ -70,4 +76,10 @@ const saveSettings = () => {
   color: green;
   margin-top: 10px;
 }
+.reload-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 </style>
