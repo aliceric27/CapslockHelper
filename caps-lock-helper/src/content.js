@@ -34,8 +34,14 @@ function setCommonStyles(element) {
   element.style.width = 'max-content';
 }
 
-function updateIndicatorPosition() {
+function initposition () {
+  indicator.style.top='';
+   indicator.style.bottom='';
+   indicator.style.right='';
+   indicator.style.left='';
+}
 
+function updateIndicatorPosition() {
   switch(settings.position) {
     case 'top-left':
       indicator.style.top = '10px';
@@ -99,9 +105,13 @@ function checkCapsLock(event) {
 }
 
 function initializeExtension() {
-  createIndicator();
-  createTargetIndicator();
-  updateIndicatorPosition();
+  if (!indicator) {
+    createIndicator();
+  }
+  if (!targetIndicator) {
+    createTargetIndicator();
+  }
+  updateIndicators();
   document.addEventListener('keydown', checkCapsLock);
 }
 
@@ -119,6 +129,21 @@ const observer = new MutationObserver((mutations) => {
   }
 });
 
+function updateIndicators() {
+  initposition();
+  if (indicator) {
+    setCommonStyles(indicator);
+    updateIndicatorPosition();
+  }
+  if (targetIndicator) {
+    setCommonStyles(targetIndicator);
+    targetIndicator.style.position = 'absolute';
+    targetIndicator.style.fontSize = '12px';
+    targetIndicator.style.whiteSpace = 'nowrap';
+  }
+}
+
+
 chrome.storage.sync.get(['position', 'capsOnText', 'capsOffText', 'showAtTarget'], function(result) {
   settings = {...settings, ...result};
   initializeExtension();
@@ -129,5 +154,6 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
   for (let key in changes) {
     settings[key] = changes[key].newValue;
   }
-  updateIndicatorPosition();
+  console.log('changed1')
+  updateIndicators();
 });
