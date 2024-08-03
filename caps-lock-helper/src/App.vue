@@ -25,9 +25,7 @@
     </div>
     <button @click="saveSettings">保存</button>
     <div v-if="saveStatus" class="save-status">
-      設置已保存，請
-      <a href="#" @click.prevent="reloadExtension" class="reload-link">重新整理頁面</a>
-      生效
+      設置已保存
     </div>
   </div>
 </template>
@@ -61,10 +59,6 @@ const saveSettings = () => {
   });
 };
 
-const reloadExtension = () => {
-  chrome.tabs.reload();
-  chrome.runtime.reload();
-};
 </script>
 
 <style scoped>
