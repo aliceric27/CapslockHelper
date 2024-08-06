@@ -59,6 +59,26 @@ function updateIndicatorPosition() {
       indicator.style.bottom = '10px';
       indicator.style.right = '10px';
       break;
+    case 'center-top':
+      indicator.style.top = '0px';
+      indicator.style.left = '50vw';
+      break;
+    case 'left-mid':
+      indicator.style.top = '50vh';
+      indicator.style.left = '0px';
+      break;
+    case 'center-mid':
+      indicator.style.top = '50vh';
+      indicator.style.left = '50vw';
+      break;
+    case 'center-right':
+      indicator.style.top = '50vh';
+      indicator.style.right = '0px';
+      break;
+    case 'center-bottom':
+      indicator.style.bottom = '0';
+      indicator.style.left = '50vw';
+      break;
   }
 }
 
