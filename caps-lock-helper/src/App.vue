@@ -1,9 +1,13 @@
 
 <template>
   <div class="container">
-    <h2>Caps Lock 狀態指示器設置</h2>
+    <img id="logo" src="./assets/CapsLookLogo.webp" alt="capsLookLogo" />
+    <a href="https://chromewebstore.google.com/detail/caps-lock-%E7%8B%80%E6%85%8B%E6%8C%87%E7%A4%BA%E5%99%A8/fpnlpmkinohjlmefoljkoadjbnphdgag">
+      <img id="link-btn" src="./assets/CapsLooklink-btn.webp" alt="link-btn" />
+    </a>
+    <div class="block">
     <div v-if="!showAtTarget" id="globalSettings">
-      顯示位置：
+      <h4>顯示位置</h4>
       <div class="position">
         <div 
           v-for="(box, index) in boxList"
@@ -20,17 +24,21 @@
         <input type="checkbox" v-model="showAtTarget"> 顯示於指標處
       </label>
     </div>
+  </div>
+  <div class="block">
+    <h4>提示文字</h4>
     <div>
-      大寫開啟時的提示文字：
-      <input v-model="capsOnText">
+      大寫開啟時
+      <input class="capsText" v-model="capsOnText">
     </div>
     <div>
-      大寫關閉時的提示文字：
-      <input v-model="capsOffText">
+      大寫關閉時
+      <input class="capsText" v-model="capsOffText">
     </div>
+  </div>
     <button @click="saveSettings" class="save-btn">保存</button>
     <div v-if="saveStatus" class="save-status">
-      設置已保存
+      設置已保存!
     </div>
   </div>
 </template>
@@ -106,6 +114,7 @@ watch(selectedBoxIndex, (newIndex) => {
 
 
 <style scoped>
+/*
 .container {
   background-color: #f4f4f4;
   width: 300px;
@@ -152,5 +161,122 @@ input, select {
 }
 .save-btn:hover {
   background-color: #008d39;
+}
+*/
+
+/*
+* {
+    border: solid #bbb 1px;
+}
+*/
+
+#logo{
+  width:126px;
+  margin-right: 142px;
+}
+#link-btn{
+  width:25px;
+  padding: 0 0 2% 0;
+}
+.block{
+  width: 300px;
+  border: solid #eee 1px;
+  box-shadow: 0px 1px 3px #eee;
+  border-radius: 12px;
+  background-color: #FBFBFB;
+  padding: 0 12px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+h2 {
+    color: #0BC65F;
+    font-size: 24px;
+    text-align: left;
+    line-height:50%;
+}
+h4{
+  color: #484848;
+  font-size: 16px;
+  line-height:25%;
+}
+.container {
+  background-color: #ffffff;
+  width: 300px;
+  padding: 10px;
+}
+div {
+  margin: 4% 0;
+  font-size: 14px;
+  color:#878787;
+}
+.position {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 168px;
+    gap: 8px;
+}
+.box {
+    border-radius: 10px;
+    width: 48px;
+    border: solid #ddd 1px;
+    background-color: #fff;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 3px 0px #ddd;
+}
+.box:hover {
+  background-color: #eee;
+}
+.box:active {
+  border: solid #299252 1px;
+  background-color: #299252;
+  box-shadow: 0px 2px 0px #299252;
+}
+.isBoxSelected {
+  border: solid #0BC65F 1px;
+  background-color: #0BC65F;
+  box-shadow: 0px 2px 0px #299252;
+}
+.isBoxSelected:hover {
+  border: solid #0BC65F 1px;
+  background-color: #0BC65F;
+  box-shadow: 0px 2px 0px #299252;
+}
+input, select {
+  margin: 1% 0;
+  padding: 1%;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+}
+.capsText{
+  width: 160px;
+  margin-left: 25px;
+}
+.save-status {
+  color: #299252;
+  font-size: 16px;
+  /*margin-top: 10px;*/
+  display: inline-block;
+  line-height:0%;
+  margin-left: 16px;
+}
+.save-btn {
+  cursor: pointer;
+  width: 80px;
+  height: 42px;
+  font-size: 16px;
+  padding: 2% 5%;
+  background-color: #0BC65F;
+  color: #ffffff;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0px 2px 0px #299252;
+}
+.save-btn:hover {
+  background-color: #00af46;
 }
 </style>
