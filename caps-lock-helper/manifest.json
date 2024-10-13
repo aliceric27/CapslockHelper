@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Caps Lock 狀態指示器",
+  "name": "CapsLook - Caps Lock 狀態指示器",
   "version": "1.22",
   "description": "顯示 Caps Lock 的開啟/關閉狀態，可自定義顯示位置、提示文字和顯示時間",
   "permissions": ["storage"],
@@ -17,9 +17,9 @@
     "default_popup": "index.html"
   },
   "icons": {
-    "16": "public/icons/keyboard.png",
-    "32": "public/icons/keyboard.png",
-    "48": "public/icons/keyboard.png",
-    "128": "public/icons/keyboard.png"
+    "16": "public/icons/CapsLookicon.png",
+    "32": "public/icons/CapsLookicon.png",
+    "48": "public/icons/CapsLookicon.png",
+    "128": "public/icons/CapsLookicon.png"
   }
 }
