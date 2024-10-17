@@ -2,9 +2,7 @@
 <template>
   <div class="container">
     <img id="logo" src="./assets/CapsLookLogo.webp" alt="capsLookLogo" />
-    <a href="https://chromewebstore.google.com/detail/caps-lock-%E7%8B%80%E6%85%8B%E6%8C%87%E7%A4%BA%E5%99%A8/fpnlpmkinohjlmefoljkoadjbnphdgag">
-      <img id="link-btn" src="./assets/CapsLooklink-btn.webp" alt="link-btn" />
-    </a>
+      <img id="link-btn" src="./assets/CapsLooklink-btn.webp" alt="link-btn" @click="outLink"/>
     <div class="block">
     <div v-if="!showAtTarget" id="globalSettings">
       <h4>顯示位置</h4>
@@ -65,6 +63,16 @@ const boxVal = {
   box8: "center-bottom",
   box9: "bottom-right",
 };
+
+const outLink = ()=>{
+  try {
+      chrome.tabs.create({
+        url: 'https://chromewebstore.google.com/detail/caps-lock-%E7%8B%80%E6%85%8B%E6%8C%87%E7%A4%BA%E5%99%A8/fpnlpmkinohjlmefoljkoadjbnphdgag'
+      });
+    } catch (error) {
+      console.error('Failed to open new tab:', error);
+    }
+}
 
 const boxList = Array.from({length: 9}, (_, i) => `box${i + 1}`);
 
