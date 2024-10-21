@@ -185,6 +185,7 @@ input, select {
 #link-btn{
   width:25px;
   padding: 0 0 2% 0;
+  cursor: pointer;
 }
 .block{
   width: 300px;
