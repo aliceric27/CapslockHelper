@@ -10,6 +10,12 @@ npm i
 npm run build
 ```
 
+## Run
+
+```
+npm run dev
+```
+
 ## Update
 
 - 1.25: add link CSS
