@@ -1,7 +1,7 @@
 ## Install
 
 ```
-npm run install
+npm i
 ```
 
 ## Build
