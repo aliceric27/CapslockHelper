@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "CapsLook - Caps Lock 狀態指示器",
-  "version": "1.25",
+  "version": "1.26",
   "description": "顯示 Caps Lock 的開啟/關閉狀態，可自定義顯示位置、提示文字和顯示時間",
-  "permissions": ["storage","tabs"],
+  "permissions": ["storage"],
   "background": {
     "service_worker": "src/background.js"
   },
